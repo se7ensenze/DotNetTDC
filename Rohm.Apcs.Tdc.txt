@@ -1,0 +1,48 @@
+[2014/07/02]
+Rohm.Apcs.Tdc Error defination table 
+
++----------+----------------------------------------------------------------------------------+
+|Error Code| Error Message                                                                    |
++----------+----------------------------------------------------------------------------------+
+|    01    | Lot <LOT_NO> s OPE_SEQ = 0                                                       |
+|          | Not found <LOT_NO> in LOT1_TABLE                                                 |
++----------+----------------------------------------------------------------------------------+
+|    02    | Running                                                                          |
+|          | Running Parallel                                                                 |
+|          | Running Parallel End                                                             |
+|          | Can not start with Normal mode because Lot status is Parallel running            |
++----------+----------------------------------------------------------------------------------+
+|    03    | Could not find lot start data of LotNo <LOT_NO> in LOT2_TABLE table              |
+|          | Lot was not started or ended                                                     |
++----------+----------------------------------------------------------------------------------+
+|    04    | Machine not found                                                                |
++----------+----------------------------------------------------------------------------------+
+|    05    | Lot Status is Down                                                               |
+|          | Lot status is Reserve                                                            |
+|          | Can not start Parallel End lot before Parallel lot                               |
++----------+----------------------------------------------------------------------------------+
+|    06    | WORK's OPE_NAME is NULL                                                          |
+|          | MACHINE's PROCESS_TYPE is NULL                                                   |
+|          | Error process machine process := <PROCESS_TYPE> but work process := <OPE_NAME>   |
++----------+----------------------------------------------------------------------------------+
+|    70    | Cannot open connection to database                                               |
++----------+----------------------------------------------------------------------------------+
+|    71    | <.NET Generated message>                                                         |
++----------+----------------------------------------------------------------------------------+
+|    72    | <.NET Generated message>                                                         |
++----------+----------------------------------------------------------------------------------+
+|    99    | Unknow Run mode [<Run Mode>]                                                     |
+|          | Unknow End Mode [<End Mode>]                                                     |
+|          | <.NET Generated message>                                                         |
++----------+----------------------------------------------------------------------------------+
+
+
+
+Class name : TdcService
+
+     Members :
+	
+          Public Function LotRequest(ByVal machineNo As String, ByVal lotNo As String, ByVal runMode As Integer) As TdcResponse
+          Public Function LotSet(ByVal machineNo As String, ByVal lotNo As String, ByVal startTime As DateTime, ByVal opNo As String, ByVal runMode As Integer) As TdcResponse
+          Public Function LotEnd(ByVal machineNo As String, ByVal lotNo As String, ByVal endTime As DateTime, ByVal goodPieces As Integer, ByVal badPieces As Integer, ByVal endMode As Integer, ByVal opNo As String) As TdcResponse
+          Public Function MoveLot(ByVal lotNo As String, ByVal mcNo As String, ByVal opNo As String, ByVal layNo As String) As Boolean
